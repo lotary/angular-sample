@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { ProductService } from './products/product.service';
 import { HttpClientModule } from '@angular/common/http';
 import { WelcomeComponent } from './home/welcome.component';
-import { ProductDetailGuard } from './products/product-detail.guard';
 import {ProductModule} from './products/product.module';
+import { AppRoutingModule } from './/app-routing.module';
+import { ProductRoutingModule } from './products/product-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,11 +19,8 @@ import {ProductModule} from './products/product.module';
     ProductModule,
     BrowserModule, 
     HttpClientModule,
-    RouterModule.forRoot([
-      {path: 'welcome', component: WelcomeComponent},
-      {path: '', redirectTo: 'welcome', pathMatch: 'full'},
-      {path: '**', redirectTo: 'welcome', pathMatch: 'full'}
-    ], {useHash: true})
+    ProductRoutingModule,
+    AppRoutingModule
   ],
   bootstrap: [AppComponent],
   providers: [ProductService]  
